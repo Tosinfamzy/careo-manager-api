@@ -15,6 +15,12 @@ export class Task {
   @Column({ nullable: true })
   tag?: string;
 
+  @Column({ default: false })
+  done: boolean;
+
+  @Column({ nullable: true })
+  weather: string;
+
   @ManyToOne(() => User, (user) => user.tasks, { onDelete: 'CASCADE' })
   user: User;
 }

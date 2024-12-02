@@ -18,12 +18,17 @@ export class UsersService {
     }
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     try {
-      return this.usersRepository.findOne({
+      const user = await this.usersRepository.findOne({
         where: { id },
         relations: ['tasks'],
+        select: ['id', 'username', 'email', 'tasks'], // select fields to exclude password
       });
+      if (!user) {
+        throw new NotFoundException(`User with ID ${id} not found`);
+      }
+      return user;
     } catch (error) {
       throw new NotFoundException(error);
     }

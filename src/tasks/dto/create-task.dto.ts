@@ -1,4 +1,3 @@
-// src/task/dto/create-task.dto.ts
 import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -17,6 +16,10 @@ export class CreateTaskDto {
   @IsString()
   @IsOptional()
   tag?: string;
+
+  @ApiProperty()
+  @IsOptional()
+  weather?: string;
 
   @ApiProperty()
   @IsNotEmpty()
