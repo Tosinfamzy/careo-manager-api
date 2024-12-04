@@ -19,12 +19,12 @@ import { IamModule } from './iam/iam.module';
       database: process.env.DB_NAME,
       autoLoadEntities: true,
       synchronize: true,
-      ssl: true,
-      extra: {
-        ssl: {
-          rejectUnauthorized: false,
-        },
-      },
+      ssl: false,
+      // extra: {
+      //   ssl: {
+      //     rejectUnauthorized: false,
+      //   },
+      // },
     }),
     TasksModule,
     UsersModule,
